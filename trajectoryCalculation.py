@@ -60,3 +60,7 @@ if __name__ == '__main__':
     roboty = coordinates[:, 1]
     plt.scatter(robotx, roboty)
     plt.show()
+    start = input("Please type the starting Robot")
+    end = input("Please type the finishing Robot")
+    
+    
