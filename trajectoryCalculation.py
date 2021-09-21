@@ -89,6 +89,7 @@ if __name__ == '__main__':
         bestN = np.argmin(deltaA)
         nextbot = otherbotname[neighbors[int(bestN)]]
         print(nextbot)
+
         input("continue?")
 #        robotminspot = otherbotname[int(possibleD[int(minspot)])]
 
