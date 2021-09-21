@@ -60,7 +60,19 @@ if __name__ == '__main__':
     roboty = coordinates[:, 1]
     plt.scatter(robotx, roboty)
     plt.show()
-    start = input("Please type the starting Robot")
-    end = input("Please type the finishing Robot")
+    startbot = input("Please type the starting Robot")
+    endx,endy = input("Please type the finishing Robot as x y").split
+    endx =int(endx)
+    endy = int(endy)
+    end = [endx, endy]
+    
+    startcoord = coordinates[startbot,:]
+    desiredA = findAngles(startcoord,end)
+    availableA = a[startbot]["angle"]
+    deltaA = abs(desiredA - availableA)
+    closestd = np.amin(deltaA)
+    possibleD = np.
+    
+    
     
     
