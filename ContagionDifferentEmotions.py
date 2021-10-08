@@ -9,7 +9,7 @@ import time
 import math
 import numpy as np
 import random
-
+from pythonosc import udp_client
 
 
 def cvt(path):
@@ -72,6 +72,14 @@ def findAngles(origin, newpoint):
     angle = math.atan2(newpoint[1] - origin[1], newpoint[0] - origin[0])
     return angle
 
+def sendSound(robot,sound):
+    IP = "192.168.1.73"
+    PORT_TO_MAX = 7980
+    message = [int(robot), int(sound)]
+    time.sleep(1)
+
+    client = udp_client.SimpleUDPClient(IP, PORT_TO_MAX)
+    client.send_message('arms', message)
 
 def findDistance(origin, newpoint):
     distance = ((((newpoint[0] - origin[0]) ** 2) + ((newpoint[1] - origin[1]) ** 2)) ** 0.5)
@@ -114,9 +122,12 @@ if __name__ == "__main__":
             category = emotions[cat]
             chaos = random.randint(0, 10)
             if chaos == 5:
-                newcat = random.int(0,4)
+                newcat = random.randint(0,3)
                 category = emotions[newcat]
             toplay = random.choice(category)
+            print("sending to robot", robot, "sound", toplay)
+            sendSound(robot, toplay)
+
             playDance(dances[toplay], [robot])
 
 
